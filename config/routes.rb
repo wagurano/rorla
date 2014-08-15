@@ -20,6 +20,15 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :problems
+  resources :choices, only: [ :create, :destroy ]
+  get "quiz", to: "quiz#index"
+  post "quiz/start", to: "quiz#start"
+  get "quiz/problem", to: "quiz#problem"
+  post "quiz/problem", to: "quiz#problem"
+  post "quiz/answer", to: "quiz#answer"
+  get "quiz/end", to: "quiz#end"
+
   # resources :tasks, only: [ :index, :show, :create, :update, :destroy ]
   # scope :api do
   #   devise_for :users,

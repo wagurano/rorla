@@ -1,0 +1,10 @@
+<h1>Quiz Results</h1>
+<p id="problem">You answered correctly <%= @correct %> out of <%= @total %> problems.</p>
+
+<p id="score"><%= @score %></p>
+
+<%= form_tag({controller: "quiz", action: "index"}, method: "get") do %>
+  <div class="center">
+    <%= submit_tag("Take another quiz", class: "submit") %>
+  </div>
+<% end %>

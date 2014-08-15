@@ -1,0 +1,33 @@
+<h1>Listing problems</h1>
+
+<p>Total: <%= @problems.size %>
+<p><%= link_to 'New Problem', new_problem_path %></p>
+
+<table border="1">
+  <tr>
+    <th>Text</th>
+    <th>Choices</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @problems.each do |problem| %>
+  <tr>
+    <td><%= problem.text %></td>
+    <td>
+      <ul>
+        <% problem.choices.each do |choice| %>
+          <li>
+            <%= choice.text %>
+            <% if choice.correct %> (Correct) <% end %>
+          </li>
+        <% end %>
+      </ul>
+    </td>
+    <td><%= link_to 'Show', problem %></td>
+    <td><%= link_to 'Edit', edit_problem_path(problem) %></td>
+    <td><%= link_to 'Destroy', problem, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
